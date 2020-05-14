@@ -1,0 +1,11 @@
+title: Development Best Practices
+email: dev@monkee-boy.com
+description: >- # this means to ignore newlines until "baseurl:"
+  These best practices are intended to guide the development team in
+  creating standards across our projects and improve the quality of
+  the sites we build.
+#baseurl: "https://Monkee-Boy.github.io"
+#url: "/Best-Practices"
+twitter_username: monkeeboy
+github_username:  Monkee-Boy
+permalink: pretty

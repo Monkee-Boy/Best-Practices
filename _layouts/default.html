@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>{{ site.title }}</title>
+  </head>
+  <body class="page-{{ page.page }}">
+    <header role="banner">
+      <nav class="top-nav" role="navigation" aria-label="Main navigation.">
+        <ul class="header-nav nav-dropdowns js-mobile-expandable">
+          {% assign navigation = site.pages | sort: "order" %}
+          {% for node in navigation %}
+            {% if null != node.title %}
+              {% if page.url == node.url %}<li class="current-menu-item">{% else %}<li>{% endif %}
+                <a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </header>
+
+    {{ content }}
+
+    <footer role="contentinfo">
+      <nav class="footer-nav" role="navigation" aria-label="Footer navigation.">
+        <ul>
+          <li><a href="https://monkee-boy.com">monkee-boy.com</a></li>
+          <li><a href="https://twitter.com/monkeeboy" title="Follow Monkee-Boy on Twitter">@monkeeboy</a></li>
+          <li><a href="https://github.com/Monkee-Boy" title="Checkout Monkee-Boy on GitHub">GitHub</a></li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>
