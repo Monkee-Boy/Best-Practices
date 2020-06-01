@@ -4,10 +4,8 @@ title: Markup
 nav: Markup
 order: 2
 layout: default
-updated: 14 May 2020
+updated: June 01 2020
 ---
-
-**This is a work in progress as we dump out thoughts and attempt to organize things.**
 
 # Markup
 
@@ -68,7 +66,7 @@ For images that provide meaning or is an important part of the content, you will
 
 For images that are decorative or is redundant to the content, you will want to include an empty `alt=""` attribute.
 
-Every image should have an alt attribute and having it empty is a valid use when the case calls for it.
+Every image should have an alt attribute and having it empty is a valid use when the case calls for it. See SVG below for specific information on that image type.
 
 When in doubt, reference the [W3C alt decision tree](https://www.w3.org/WAI/tutorials/images/decision-tree/).
 
@@ -80,7 +78,41 @@ We don't often deal with directly embedding audio or video but when needed, [Abl
 
 ## SVG
 
-[optimizing, accessible, sprites]
+SVG images are ideal for logos, icons, and illustrations. They are scalable, small, and allow you to manipulate with styles (color, animate, etc).
+
+### Sprites
+
+We use SVG sprites to combine multiple files into one. We use this mostly for icons and as a replacement for font icons.
+
+### Accessibility
+
+If a SVG image is purely decorative:
+
+* Use an empty `alt=""` when it's an `<img>` element.
+* Use `aria-hidden="true"` when it's an `<svg>` element.
+
+If the SVG image is meaningful then you should use a title, desc, aria labelledby, and role img.
+
+```
+<svg role="img" aria-labeledby="logo-title logo-desc">
+  <title id="logo-title">The Logo Title</title>
+  <desc id="logo-desc">Some description goes here...</desc>
+</svg>
+```
+
+If the SVG image is from a sprite and has no supporting text, use aria label.
+
+```
+<a href="http://twitter.com/monkeeboy" aria-label="Follow Monkee-Boy on Twitter">
+  <svg><use xlink:href="#icon-twitter"></use></svg>
+</a>
+```
+
+See [Creating Accessible SVGs](https://www.deque.com/blog/creating-accessible-svgs/) and [Using ARIA to Enhance SVG Accessibility](https://developer.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/) for more.
+
+### Optimizing
+
+SVG images should be properly optimized and compressed (including files you receive from the design team or clients). We recommend using [SVGOMG](https://jakearchibald.github.io/svgomg/).
 
 ## Fonts
 
